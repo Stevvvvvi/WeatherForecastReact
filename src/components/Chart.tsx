@@ -17,9 +17,9 @@ const Chart=()=>{
             return ({x: time, y: hour?.temp_c, extra: hour?.humidity}) || [];
         }
         )
-    })
+    }) || []
     //const mergedTemperature:any[] = [].concat.apply([], dataPoint);
-    const mergedTemperature:any[] = dataPoint[page];
+    const mergedTemperature:any[] = dataPoint[page] || [];
     const HumidityData = mergedTemperature.map(e=>({x: e?.x, y: e?.extra})) || []
     
     const [enableTemp, setEnableTemp]=useState(true);
