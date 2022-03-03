@@ -23,8 +23,8 @@ const Chart=()=>{
     const [enableTemp, setEnableTemp]=useState(true);
     const [enableHumi, setEnableHumi]=useState(true);
     
-    useEffect(()=>{console.log("enableHumi"+enableHumi)},[enableHumi])
-    useEffect(()=>{console.log("enableTemp"+enableTemp)},[enableTemp])
+    //useEffect(()=>{console.log("enableHumi"+enableHumi)},[enableHumi])
+    //useEffect(()=>{console.log("enableTemp"+enableTemp)},[enableTemp])
     const options = {
         title: {
           text: "City Temporarture and Humidity Forcase"
@@ -33,7 +33,7 @@ const Chart=()=>{
 		exportEnabled: true,
         theme: "dark2",
         axisX:{
-            title: "time",
+            title: "Time (day:hour)",
             valueFormatString: "DD:hh",
             suffix: "h",
             prefix: "day"
