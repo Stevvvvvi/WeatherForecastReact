@@ -1,4 +1,4 @@
-import { GetWeatherForcastFailed, GetWeatherForcastStart, GetWeatherForcastSuccess } from "../actions/actionType"
+import { ClearCurrentData, GetWeatherForcastFailed, GetWeatherForcastStart, GetWeatherForcastSuccess } from "../actions/actionType"
 import { WeatherForcastRootAction } from "../actions/weatherForcastAction"
 
 export type WeatherReducerType={
@@ -32,6 +32,13 @@ const WeatherReducer = (state = initialState, action: WeatherForcastRootAction) 
             ...state,
             loading: false,
             errorMessage: "Cannot Visit the Backend API"
+        }
+      case ClearCurrentData:
+        return {
+          ...state,
+          loading: false,
+          errorMessage: null,
+          data: null,
         }
       default:
         return state

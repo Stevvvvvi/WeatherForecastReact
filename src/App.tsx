@@ -8,6 +8,7 @@ function App() {
   const dispatch= useDispatch();
   return (
     <div className="App">
+      <h2>Weather Forcast</h2>
       <div className="custom-select" onChange={(e: any)=>dispatch(GetweatherForcastAction(e.target.value || ""))}>
         <select>
           <option value="">...</option>

@@ -1,9 +1,10 @@
-import { GetWeatherForcastFailed, GetWeatherForcastStart, GetWeatherForcastSuccess } from "./actionType"
+import { ClearCurrentData, GetWeatherForcastFailed, GetWeatherForcastStart, GetWeatherForcastSuccess } from "./actionType"
 
 export type WeatherForcastRootAction=
           GetWeatherForcastStartType 
         | GetWeatherForcastSuccessType
-        | GetWeatherForcastFailedType;
+        | GetWeatherForcastFailedType
+        | ClearCurrentDataType;
 
 type GetWeatherForcastStartType={
     type: typeof GetWeatherForcastStart;
@@ -18,11 +19,15 @@ type GetWeatherForcastFailedType={
     type: typeof GetWeatherForcastFailed;
     
 }
+type ClearCurrentDataType={
+  type: typeof ClearCurrentData;
+  
+}
 export const GetweatherForcastAction=(country: string) => (dispatch: (arg0: WeatherForcastRootAction) => void)=>{
     dispatch({type: GetWeatherForcastStart});
     console.log(country);
     if (country==""){
-        dispatch({type: GetWeatherForcastFailed})
+        dispatch({type: ClearCurrentData})
         return
     }
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=c717ab506269416bab9231151220103&q=${country}&days=3&aqi=no&alerts=no`)

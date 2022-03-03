@@ -1,4 +1,11 @@
 .App {
+  margin: 3vh 3vw;
+}
+.custom-select{
+  text-align: center;
+  font-size: larger;
+}
+h2{
   text-align: center;
 }
 
