@@ -8,6 +8,7 @@ var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 const Chart=()=>{
     const weatherReducer = useSelector((e:RootStateType)=>e.WeatherReducer);
+    const [page,setPage]=useState(0);
     const dataPoint = weatherReducer.data?.forecast?.forecastday?.map((day:any)=>{
         return day?.hour?.map(
         (hour:any) => {
