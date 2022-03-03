@@ -1,9 +1,13 @@
 .chart-component{
     padding: 10px 10px;
-    .toggle-enable{
-        padding: 20px 20px;
+    .change-page{
+        display: flex;
+        justify-content: space-between;
+    }
+    h3{
         text-align: center;
-        button{
+    }
+    button{
             margin: 0px 30px;
             align-items: center;
             background-color: #FFFFFF;
@@ -47,5 +51,9 @@
                 transform: translateY(0);
             }
         }
+    .toggle-enable{
+        padding: 20px 20px;
+        text-align: center;
+        
     }
 }

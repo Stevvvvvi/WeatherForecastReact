@@ -18,7 +18,8 @@ const Chart=()=>{
         }
         )
     })
-    const mergedTemperature:any[] = [].concat.apply([], dataPoint);
+    //const mergedTemperature:any[] = [].concat.apply([], dataPoint);
+    const mergedTemperature:any[] = dataPoint[page];
     const HumidityData = mergedTemperature.map(e=>({x: e?.x, y: e?.extra})) || []
     
     const [enableTemp, setEnableTemp]=useState(true);
@@ -34,8 +35,8 @@ const Chart=()=>{
 		exportEnabled: true,
         theme: "dark2",
         axisX:{
-            title: "Time (day:hour)",
-            valueFormatString: "DD:hh",
+            title: "Time (hour)",
+            valueFormatString: "hh",
             suffix: "h",
             prefix: "day"
         },
@@ -70,6 +71,23 @@ const Chart=()=>{
      }
      return <div className="chart-component">
          {weatherReducer.data && weatherReducer.data?.forecast && <CanvasJSChart options = {options} />}
+         {weatherReducer.data && weatherReducer.data?.forecast && <h3>Day {weatherReducer.data?.forecast?.forecastday[page]?.date}</h3>}
+         {weatherReducer.data && weatherReducer.data?.forecast && <div className="change-page">
+             <button onClick={()=>{
+                 if (page<=0){
+                     setPage(dataPoint?.length-1)
+                 }else{
+                     setPage(page-1)
+                 }
+             }}>Previous Day</button>
+             <button onClick={()=>{
+                 if (page>=dataPoint?.length-1){
+                    setPage(0)
+                }else{
+                    setPage(page+1)
+                }
+             }}>Next Day</button>
+         </div>}
          {weatherReducer.data && weatherReducer.data?.forecast && <div className="toggle-enable">
              <button onClick={()=>{console.log(enableTemp);setEnableTemp(!enableTemp)}}>Toggle Temperature Display</button>
              <button onClick={()=>setEnableHumi(!enableHumi)}>Toggle Humidity Display</button>
